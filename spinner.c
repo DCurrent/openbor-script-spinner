@@ -235,11 +235,11 @@ int dc_spinner_increment_run()
 		range_bound = dc_spinner_get_range_bound_lower();
 
 		// Cap the value? Loop back? 
-		if (range_bound == DC_SPINNER_SPINNER_RANGE_BOUND_LOOP)
+		if (range_bound == DC_SPINNER_RANGE_BOUND_LOOP)
 		{
 			current = range_upper;
 		}
-		else if (range_bound == DC_SPINNER_SPINNER_RANGE_BOUND_CAP)
+		else if (range_bound == DC_SPINNER_RANGE_BOUND_CAP)
 		{
 			current = range_lower;
 		}
@@ -250,11 +250,11 @@ int dc_spinner_increment_run()
 		range_bound = dc_spinner_get_range_bound_upper();
 
 		// Cap the value? Loop back? 
-		if (range_bound == DC_SPINNER_SPINNER_RANGE_BOUND_LOOP)
+		if (range_bound == DC_SPINNER_RANGE_BOUND_LOOP)
 		{
 			current = range_upper;
 		}
-		else if (range_bound == DC_SPINNER_SPINNER_RANGE_BOUND_CAP)
+		else if (range_bound == DC_SPINNER_RANGE_BOUND_CAP)
 		{
 			current = range_lower;
 		}
