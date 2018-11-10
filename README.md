@@ -17,12 +17,16 @@ None
 
 Increment the spinner value. Increments (or decrements), updates, and returns the current spinner value.
 ```c
-int i = dc_spinner_increment_run();
+int i;
+
+i = dc_spinner_increment_run();
 ```
 
 Get current spinner value.
 ```c
-int i = dc_spinner_get_value();
+int i;
+
+i = dc_spinner_get_value();
 ```
 
 Set current spinner value.
@@ -40,7 +44,9 @@ How much the spinner increments.
 
 Get current spinner increment.
 ```c
-int i = dc_spinner_get_increment();
+int i;
+
+i = dc_spinner_get_increment();
 ```
 
 Set current spinner increment.
@@ -52,7 +58,9 @@ dc_spinner_set_increment(i);
 
 Get current spinner steps.
 ```c
-int i = dc_spinner_get_steps();
+int i;
+
+i = dc_spinner_get_steps();
 ```
 
 Set current spinner steps.
@@ -65,7 +73,9 @@ dc_spinner_set_steps(i);
 Calculate, set, and return increment value based on steps and range properties. For instance, if range is 0 to 100, and steps are 20, then increments will be 5.
 
 ```c
-dc_spinner_increment_buid()
+int i;
+
+i = dc_spinner_increment_buid()
 ```
 
 #### Range
@@ -74,12 +84,16 @@ Range controls the minimum and maximum values spinner can reach.
 
 Get current lower boundry.
 ```c
-int i = dc_spinner_get_range_lower();
+int i;
+
+i = dc_spinner_get_range_lower();
 ```
 
 Get current upper boundry.
 ```c
-int i = dc_spinner_get_range_upper();
+int i;
+
+i = dc_spinner_get_range_upper();
 ```
 
 Set a new lower boundry.
@@ -100,18 +114,22 @@ dc_spinner_set_range_upper(i);
 
 The following constants and functions determine how the library behaves when attempting to increment or decrement beyond min or max range.
 
-* DC_SPINNER_SPINNER_RANGE_BOUND_CAP - Increments/decrements beyond range are ignored, the value does not change.
-* DC_SPINNER_SPINNER_RANGE_BOUND_LOOP - Increments/decrements roll over to the opposite range.
-* DC_SPINNER_SPINNER_RANGE_BOUND_BREAK - Increments/decrements can break range limits.
+* DC_SPINNER_RANGE_BOUND_CAP - Increments/decrements beyond range are ignored, the value does not change.
+* DC_SPINNER_RANGE_BOUND_LOOP - Increments/decrements roll over to the opposite range.
+* DC_SPINNER_RANGE_BOUND_BREAK - Increments/decrements can break range limits.
 
 Get current lower boundry behavior.
 ```c
-int i = dc_spinner_get_range_bound_lower();
+int i;
+
+i = dc_spinner_get_range_bound_lower();
 ```
 
 Get current upper boundry behavior.
 ```c
-int i = dc_spinner_get_range_bound_upper();
+int i;
+
+i = dc_spinner_get_range_bound_upper();
 ```
 
 Set lower boundry behavior.
@@ -136,7 +154,9 @@ By default, the active instance is 0. To create more, switch to a new active ins
 
 Get active instance ID.
 ```c
-int i = dc_spinner_get_instance();
+int i;
+
+i = dc_spinner_get_instance();
 ```
 
 Set (swicth to) active instance.
