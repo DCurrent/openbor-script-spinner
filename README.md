@@ -58,7 +58,7 @@ dc_spinner_set_increment(i);
 
 #### Steps
 
-Steps are an optional feature that control the number of increments needed to go from the minium to maximum range (or max to min). Steps are a great way to easily build spinners when you are more interested in the number of increments than a single increment's value.
+Steps are an optional feature to calculate the value of increments needed to go from the minium to maximum range (or max to min) in a given number of steps. This allows you to quickly build spinners with a static number of increments regardless of range.
 
 Get current spinner steps.
 ```c
