@@ -15,7 +15,7 @@ None
 
 ## Use Cases
 
-Increment the spinner value. Increments (or decrements), updates, and returns the current spinner value.
+Increment the spinner value. Increments (or decrements) by adding the current increment value to spinner and returns the new spinner value.
 ```c
 int i;
 
@@ -40,7 +40,7 @@ dc_spinner_set_value(i);
 
 #### Increments
 
-How much the spinner increments.
+Value added to spinner when incremented. Use negative values to decrement.
 
 Get current spinner increment.
 ```c
