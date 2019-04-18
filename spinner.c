@@ -1,49 +1,131 @@
 #include "data/scripts/dc_spinner/config.h"
-#import "data/scripts/dc_spinner/config.c"
+#import "data/scripts/dc_spinner/instance.c"
 
-// What to do when incrementing and already at range lower.
-void dc_spinner_set_range_bound_lower(int value)
+// What to do when incrementing and already at range limit.
+int dc_spinner_get_range_bound_max()
 {
-	int instance;
-	instance = dc_spinner_get_instance();
+	char id;
+	void result;
 
-	setlocalvar(instance + DC_SPINNER_VAR_KEY_RANGE_BOUND_LOWER, value);
-}
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_RANGE_BOUND_MAX;
 
-int dc_spinner_get_range_bound_lower()
-{
-	int instance;
-	instance = dc_spinner_get_instance();
-
-	void result = getlocalvar(instance + DC_SPINNER_VAR_KEY_RANGE_BOUND_LOWER);
+		result = getlocalvar(id);
 
 	if (!result)
 	{
-		result = DC_SPINNER_DEFAULT_RANGE_BOUND_LOWER;
+		result = DC_SPINNER_DEFAULT_RANGE_BOUND_MAX;
 	}
 
 	return result;
 }
 
-// What to do when incrementing and already at range upper.
-void dc_spinner_set_range_bound_upper(int value)
+void dc_spinner_set_range_bound_max(int value)
 {
-	int instance;
-	instance = dc_spinner_get_instance();
+	char id;
 
-	setlocalvar(instance + DC_SPINNER_VAR_KEY_RANGE_BOUND_UPPER, value);
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_RANGE_BOUND_MAX;
+
+	// Delete if requested set value is default.
+	if (value == DC_SPINNER_DEFAULT_RANGE_BOUND_MAX)
+	{
+		value = NULL();
+	}
+
+	setlocalvar(id, value);
 }
 
-int dc_spinner_get_range_bound_upper()
+int dc_spinner_get_range_bound_min()
 {
-	int instance;
-	instance = dc_spinner_get_instance();
+	char id;
+	void result;
 
-	void result = getlocalvar(instance + DC_SPINNER_VAR_KEY_RANGE_BOUND_UPPER);
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_RANGE_BOUND_MIN;
+
+		result = getlocalvar(id);
 
 	if (!result)
 	{
-		result = DC_SPINNER_DEFAULT_RANGE_BOUND_UPPER;
+		result = DC_SPINNER_DEFAULT_RANGE_BOUND_MIN;
+	}
+
+	return result;
+}
+
+void dc_spinner_set_range_bound_min(int value)
+{
+	char id;
+
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_RANGE_BOUND_MIN;
+
+	// Delete if requested set value is default.
+	if (value == DC_SPINNER_DEFAULT_RANGE_BOUND_MIN)
+	{
+		value = NULL();
+	}
+
+	setlocalvar(id, value);
+}
+
+// Maximum ranges of spinner.
+int dc_spinner_get_range_max()
+{
+	char id;
+	void result;
+
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_RANGE_MAX;
+
+		result = getlocalvar(id);
+
+	if (!result)
+	{
+		result = DC_SPINNER_DEFAULT_RANGE_MAX;
+	}
+
+	return result;
+}
+
+void dc_spinner_set_range_max(int value)
+{
+	char id;
+
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_RANGE_MAX;
+
+	// Delete if requested set value is default.
+	if (value == DC_SPINNER_DEFAULT_RANGE_MAX)
+	{
+		value = NULL();
+	}
+
+	setlocalvar(id, value);
+}
+
+void dc_spinner_set_range_min(int value)
+{
+	char id;
+
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_RANGE_MIN;
+
+	// Delete if requested set value is default.
+	if (value == DC_SPINNER_DEFAULT_RANGE_MIN)
+	{
+		value = NULL();
+	}
+
+	setlocalvar(id, value);
+}
+
+int dc_spinner_get_range_min()
+{
+	char id;
+	void result;
+
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_RANGE_MIN;
+
+		result = getlocalvar(id);
+
+	if (!result)
+	{
+		result = DC_SPINNER_DEFAULT_RANGE_MIN;
 	}
 
 	return result;
@@ -52,18 +134,26 @@ int dc_spinner_get_range_bound_upper()
 // Current incremented value.
 void dc_spinner_set_value(int value)
 {
-	int instance;
-	instance = dc_spinner_get_instance();
+	char id;
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_VALUE;
 
-	setlocalvar(instance + DC_SPINNER_VAR_KEY_VALUE, value);
+	// Delete if requested set value is default.
+	if (value == DC_SPINNER_DEFAULT_VALUE)
+	{
+		value = NULL();
+	}
+
+	setlocalvar(id, value);
 }
 
 int dc_spinner_get_value()
 {
-	int instance;
-	instance = dc_spinner_get_instance();
+	char id;
+	void result;
 
-	void result = getlocalvar(instance + DC_SPINNER_VAR_KEY_VALUE);
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_VALUE;
+
+	result = getlocalvar(id);
 
 	if (!result)
 	{
@@ -79,15 +169,18 @@ void dc_spinner_set_increment(int value)
 	int instance;
 	instance = dc_spinner_get_instance();
 
-	setlocalvar(instance + DC_SPINNER_VAR_KEY_INCREMENT, value);
+	setlocalvar(instance + DC_SPINNER_MEMBER_INCREMENT, value);
 }
 
+// Amount added or deducted when cycling spinner.
 int dc_spinner_get_increment()
 {
-	int instance;
-	instance = dc_spinner_get_instance();
+	char id;
+	void result;
 
-	void result = getlocalvar(instance + DC_SPINNER_VAR_KEY_INCREMENT);
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_INCREMENT;
+
+		result = getlocalvar(id);
 
 	if (!result)
 	{
@@ -97,71 +190,32 @@ int dc_spinner_get_increment()
 	return result;
 }
 
-// Final value we want to reach when incrementing/decrementing.
-void dc_spinner_set_range_upper(int value)
+void dc_spinner_set_increment(int value)
 {
-	int instance;
-	instance = dc_spinner_get_instance();
+	char id;
 
-	setlocalvar(instance + DC_SPINNER_VAR_KEY_RANGE_UPPER, value);
-}
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_INCREMENT;
 
-int dc_spinner_get_range_upper()
-{
-	int instance;
-	instance = dc_spinner_get_instance();
-
-	void result = getlocalvar(instance + DC_SPINNER_VAR_KEY_RANGE_UPPER);
-
-	if (!result)
+	// Delete if requested set value is default.
+	if (value == DC_SPINNER_DEFAULT_INCREMENT)
 	{
-		result = DC_SPINNER_DEFAULT_RANGE_UPPER;
+		value = NULL();
 	}
 
-	return result;
+	setlocalvar(id, value);
 }
 
-// Value we start from before begining to increment toward final
-// value.
-void dc_spinner_set_range_lower(int value)
-{
-	int instance;
-	instance = dc_spinner_get_instance();
 
-	setlocalvar(instance + DC_SPINNER_VAR_KEY_RANGE_LOWER, value);
-}
-
-int dc_spinner_get_range_lower()
-{
-	int instance;
-	instance = dc_spinner_get_instance();
-
-	void result = getlocalvar(instance + DC_SPINNER_VAR_KEY_RANGE_LOWER);
-
-	if (!result)
-	{
-		result = DC_SPINNER_DEFAULT_RANGE_LOWER;
-	}
-
-	return result;
-}
-
-// Number of steps want want to take when incrementing between
-// original RGB value and final value.
-void dc_spinner_set_steps(int value)
-{
-	int instance;
-	instance = dc_spinner_get_instance();
-
-	setlocalvar(instance + DC_SPINNER_VAR_KEY_STEPS, value);
-}
-
+// Number of steps want want to take when stepsing between
+// original value and final value.
 int dc_spinner_get_steps()
 {
-	int instance;
-	instance = dc_spinner_get_instance();
+	char id;
+	void result;
 
-	void result = getlocalvar(instance + DC_SPINNER_VAR_KEY_STEPS);
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_STEPS;
+
+		result = getlocalvar(id);
 
 	if (!result)
 	{
@@ -169,6 +223,21 @@ int dc_spinner_get_steps()
 	}
 
 	return result;
+}
+
+void dc_spinner_set_steps(int value)
+{
+	char id;
+
+	id = dc_spinner_get_instance() + DC_SPINNER_MEMBER_STEPS;
+
+	// Delete if requested set value is default.
+	if (value == DC_SPINNER_DEFAULT_STEPS)
+	{
+		value = NULL();
+	}
+
+	setlocalvar(id, value);
 }
 
 // Caskey, Damon V.
@@ -186,8 +255,8 @@ int dc_spinner_increment_buid()
 	int steps;
 	
 	// Get start and end points.
-	start = dc_spinner_get_range_lower();
-	end = dc_spinner_get_range_upper();
+	start = dc_spinner_get_range_min();
+	end = dc_spinner_get_range_max();
 
 	// Get the number of increment steps we want.
 	steps = dc_spinner_get_steps();
@@ -213,8 +282,8 @@ int dc_spinner_increment_run()
 	int current;
 	int increment;
 	int range_bound;
-	int range_lower;
-	int range_upper;
+	int range_min;
+	int RANGE_MAX;
 
 
 	// Get current and increment values.
@@ -222,41 +291,41 @@ int dc_spinner_increment_run()
 	increment	= dc_spinner_get_increment();
 	
 	// Get our min/max ranges.
-	range_lower = dc_spinner_get_range_lower();
-	range_upper = dc_spinner_get_range_upper();
+	range_min = dc_spinner_get_range_min();
+	RANGE_MAX = dc_spinner_get_range_max();
 
 	// Apply increment.
 	current += increment;
 
 	// Has current gone out of bounds?
-	if (current < range_lower)
+	if (current < range_min)
 	{
 		// Get set action.
-		range_bound = dc_spinner_get_range_bound_lower();
+		range_bound = dc_spinner_get_range_bound_min();
 
 		// Cap the value? Loop back? 
 		if (range_bound == DC_SPINNER_RANGE_BOUND_LOOP)
 		{
-			current = range_upper;
+			current = RANGE_MAX;
 		}
 		else if (range_bound == DC_SPINNER_RANGE_BOUND_CAP)
 		{
-			current = range_lower;
+			current = range_min;
 		}
 	}
-	else if (current > range_upper)
+	else if (current > RANGE_MAX)
 	{
 		// Get set action.
-		range_bound = dc_spinner_get_range_bound_upper();
+		range_bound = dc_spinner_get_range_bound_max();
 
 		// Cap the value? Loop back? 
 		if (range_bound == DC_SPINNER_RANGE_BOUND_LOOP)
 		{
-			current = range_upper;
+			current = RANGE_MAX;
 		}
 		else if (range_bound == DC_SPINNER_RANGE_BOUND_CAP)
 		{
-			current = range_lower;
+			current = range_min;
 		}
 	}
 

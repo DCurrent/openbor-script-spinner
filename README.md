@@ -90,28 +90,28 @@ Get current lower boundry.
 ```c
 int i;
 
-i = dc_spinner_get_range_lower();
+i = dc_spinner_get_range_min();
 ```
 
 Get current upper boundry.
 ```c
 int i;
 
-i = dc_spinner_get_range_upper();
+i = dc_spinner_get_range_max();
 ```
 
 Set a new lower boundry.
 ```c
 int i = {int};
 
-dc_spinner_set_range_lower(i);
+dc_spinner_set_range_min(i);
 ```
 
 Set a new upper boundry.
 ```c
 int i = {int};
 
-dc_spinner_set_range_upper(i);
+dc_spinner_set_range_max(i);
 ```
 
 #### Boundary Behavior
@@ -126,28 +126,28 @@ Get current lower boundry behavior.
 ```c
 int i;
 
-i = dc_spinner_get_range_bound_lower();
+i = dc_spinner_get_range_bound_min();
 ```
 
 Get current upper boundry behavior.
 ```c
 int i;
 
-i = dc_spinner_get_range_bound_upper();
+i = dc_spinner_get_range_bound_max();
 ```
 
 Set lower boundry behavior.
 ```c
 int i = {int};
 
-dc_spinner_set_range_bound_lower(i);
+dc_spinner_set_range_bound_min(i);
 ```
 
 Set upper boundry behavior.
 ```c
 int i = {int};
 
-dc_spinner_set_range_bound_upper(i);
+dc_spinner_set_range_bound_max(i);
 ```
 
 #### Instance
